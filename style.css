@@ -75,20 +75,54 @@ legend {
   width: 60px;
   height: 60px;
   margin: 10px;
-  border: 1px solid rgb(124, 122, 122);
-  background: yellow;
+  border: 2px solid rgba(255, 95, 3, 0.322);
+  background: rgba(255, 255, 0, 0.322);
   transition: var(--transition);
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box1.hide,
+.box2.hide,
+.box3.hide,
+.box4.hide,
+.box5.hide,
+.box6.hide,
+.box7.hide,
+.box8.hide,
+.box9.hide {
+  transition: 0.5s ease-out;
+  opacity: 0.2;
+}
+
+.box1.win,
+.box2.win,
+.box3.win,
+.box4.win,
+.box5.win,
+.box6.win,
+.box7.win,
+.box8.win,
+.box9.win {
+  transition: 0.5s ease-out;
+  border: 2px solid white;
 }
 
 .box:hover {
   border-radius: 50%;
-  background: radial-gradient(circle at center, yellow, orange);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 0, 0.402),
+    orange
+  );
   border-color: white;
 }
 
 .reset {
   font-size: 18px;
-  width: 228px;
+  width: 234px;
   display: block;
   padding: 10px;
   margin: auto;
