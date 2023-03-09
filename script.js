@@ -159,6 +159,10 @@ function update(index) {
     notify.innerText = "Player 1 vs Player 2";
     tieAudio.play();
     updateBoxes("tie");
+
+    resultBox.forEach((box) => {
+      box.style.borderColor = "black";
+    });
   } else {
     // ternary operator/tion sir, shorthand sa if else
     currentPlayer = currentPlayer === "Player 1" ? "Player 2" : "Player 1";
@@ -167,7 +171,10 @@ function update(index) {
     // kani sir para muusob pud ang color sa text, base sa current player
     header.innerText = currentPlayer;
     header.style.color = currentColor;
-    resultBox.style.borderColor = currentColor;
+
+    resultBox.forEach((box) => {
+      box.style.borderColor = currentColor;
+    });
   }
 }
 
