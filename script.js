@@ -1,6 +1,11 @@
+const winnerAudio = new Audio("winSound.mp3");
+const tieAudio = new Audio("drawSound.mp3");
+
 const header = document.getElementById("header");
 const boxes = document.querySelectorAll(".box");
 const notify = document.querySelector(".notification");
+
+const resultBox = document.querySelectorAll(".resultBox");
 
 const boxClasses = [
   ".box1",
@@ -83,6 +88,7 @@ function check(index) {
 }
 
 function updateBoxes(hide) {
+  console.log(hide);
   const winnerBoxesSet = new Set(winnerBoxes);
   for (let i = 0; i < 9; i++) {
     if (!winnerBoxesSet.has(i)) {
@@ -92,15 +98,26 @@ function updateBoxes(hide) {
       } else {
         document.querySelector(boxClasses[i]).classList.remove("hide");
         document.querySelector(boxClasses[i]).classList.remove("win");
+        document.querySelector(boxClasses[i]).innerHTML =
+          '<i class="fa-solid fa-fire""></i>';
       }
     } else {
       if (hide) {
         document.querySelector(boxClasses[i]).classList.remove("hide");
         document.querySelector(boxClasses[i]).classList.add("win");
+        document.querySelector(boxClasses[i]).innerHTML =
+          '<i class="fa-regular fa-star"></i>';
       } else {
         document.querySelector(boxClasses[i]).classList.remove("hide");
         document.querySelector(boxClasses[i]).classList.remove("win");
+        document.querySelector(boxClasses[i]).innerHTML =
+          '<i class="fa-solid fa-fire"></i>';
       }
+    }
+    if (hide == "tie") {
+      console.log(hide);
+      document.querySelector(boxClasses[i]).innerHTML =
+        '<i class="fa-solid fa-xmark"></i>';
     }
   }
 }
@@ -132,7 +149,7 @@ function update(index) {
     winner = currentPlayer;
     header.innerText = winner + " wins";
     notify.innerText = "Congratulations";
-
+    winnerAudio.play();
     // console.log("winner Boxes: " + winnerBoxes);
     updateBoxes(true);
   } else if (boxColors.every((color) => color !== null)) {
@@ -140,6 +157,8 @@ function update(index) {
     header.innerText = "It's a tie";
     header.style.color = " black";
     notify.innerText = "Player 1 vs Player 2";
+    tieAudio.play();
+    updateBoxes("tie");
   } else {
     // ternary operator/tion sir, shorthand sa if else
     currentPlayer = currentPlayer === "Player 1" ? "Player 2" : "Player 1";
@@ -148,6 +167,7 @@ function update(index) {
     // kani sir para muusob pud ang color sa text, base sa current player
     header.innerText = currentPlayer;
     header.style.color = currentColor;
+    resultBox.style.borderColor = currentColor;
   }
 }
 
