@@ -197,4 +197,8 @@ function reset() {
   header.style.color = currentColor;
 
   updateBoxes(false);
+
+  resultBox.forEach((box) => {
+    box.style.borderColor = "red";
+  });
 }
