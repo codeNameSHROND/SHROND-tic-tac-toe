@@ -1,8 +1,6 @@
-const backgroundAudio = new Audio("Big River - Telecasted.mp3");
+const backgroundAudio = new Audio("Born a Rockstar - NEFFEX.mp3");
 
 document.addEventListener("click", () => {
-  clickAudio.play();
-
   backgroundAudio.loop = true;
   backgroundAudio.volume = 0.1;
   backgroundAudio.play().catch((error) => {
