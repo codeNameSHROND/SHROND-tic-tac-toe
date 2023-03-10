@@ -22,12 +22,49 @@ header {
   padding: 20px;
 }
 
+.intro {
+  position: absolute;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0 50px;
+  height: 300px;
+  width: 60%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 0px 50px 5px rgb(0, 255, 191);
+}
+
+.intro button {
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px 30px;
+  background: black;
+  border: 1px solid white;
+}
+
+.intro.remove {
+  display: none;
+}
+
 main {
+  transform: scale(0);
   padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: rgb(37, 37, 37);
+}
+
+main.start {
+  transform: scale(1);
 }
 
 fieldset,
@@ -141,7 +178,8 @@ legend {
   transition: var(--transition);
 }
 
-.reset:hover {
+.reset:hover,
+.intro button:hover {
   background: black;
   color: white;
   border: 1px solid white;

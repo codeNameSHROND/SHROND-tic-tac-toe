@@ -1,3 +1,16 @@
+const backgroundAudio = new Audio("Big River - Telecasted.mp3");
+
+document.addEventListener("click", () => {
+  clickAudio.play();
+
+  backgroundAudio.loop = true;
+  backgroundAudio.volume = 0.1;
+  backgroundAudio.play().catch((error) => {
+    console.log(error);
+  });
+});
+
+const clickAudio = new Audio("clicked.mp3");
 const winnerAudio = new Audio("winSound.mp3");
 const tieAudio = new Audio("drawSound.mp3");
 
@@ -179,6 +192,8 @@ function update(index) {
 }
 
 function reset() {
+  clickAudio.play();
+
   currentPlayer = "Player 1";
   currentColor = "red";
   notify.innerText = "Select your box";
@@ -201,4 +216,9 @@ function reset() {
   resultBox.forEach((box) => {
     box.style.borderColor = "red";
   });
+}
+
+function start() {
+  document.querySelector("main").classList.add("start");
+  document.querySelector(".intro ").classList.add("remove");
 }
